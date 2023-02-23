@@ -106,14 +106,16 @@ char *convert_number(long int num, int base, int flags)
 	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
-	do{
+	do {
 		*--ptr = array[n % base];
 		n /= base;
 	}
-	while (n != 0);
-	if (sign)
+	while (n != 0)
+	{
+		if (sign)
 		*--ptr = sign;
-	return (ptr);
+		return (ptr);
+	}
 }
 /**
  * remove_comments - function replaces first instance of '#' with '\0'
@@ -124,6 +126,7 @@ char *convert_number(long int num, int base, int flags)
 void remove_comments(char *buf)
 {
 	int i;
+	
 	for (i = 0; buf[i] != '\0'; i++)
 		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
 		{

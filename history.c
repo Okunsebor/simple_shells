@@ -8,8 +8,8 @@
 char *get_history_file(info_t *info)
 {
 	char *buf, *dir;
+	
 	dir = _getenv(info, "HOME=");
-        
 	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
@@ -61,6 +61,7 @@ int read_history(info_t *info)
 	ssize_t fd, rdlen, fsize = 0;
 	struct stat st;
 	char *buf = NULL, *filename = get_history_file(info);
+	
 	if (!filename)
 		return (0);
 	fd = open(filename, O_RDONLY);
@@ -106,6 +107,7 @@ int read_history(info_t *info)
 int build_history_list(info_t *info, char *buf, int linecount)
 {
 	list_t *node = NULL;
+	
 	if (info->history)
 		node = info->history;
 	add_node_end(&node, buf, linecount);

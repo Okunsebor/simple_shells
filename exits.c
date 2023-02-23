@@ -41,8 +41,10 @@ char *_strncat(char *dest, char *src, int n)
 {
 	int i, j;
 	char *s = dest;
+	
 	i = 0;
 	j = 0;
+	
 	while (dest[i] != '\0')
 		i++;
 	while (src[j] != '\0' && j < n)
@@ -64,8 +66,7 @@ char *_strncat(char *dest, char *src, int n)
  */
 char *_strchr(char *s, char c)
 {
-	do
-	{
+	do {
 		if (*s == c)
 			return (s);
 	}

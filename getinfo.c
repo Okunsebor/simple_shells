@@ -18,6 +18,7 @@ void clear_info(info_t *info)
 void set_info(info_t *info, char **av)
 {
 	int i = 0;
+	
 	info->fname = av[0];
 
 	if (info->arg)
@@ -48,7 +49,7 @@ void free_info(info_t *info, int all)
 {
 	ffree(info->argv);
 	info->argv = NULL;
-        info->path = NULL;
+	info->path = NULL;
 
 	if (all)
 	{
